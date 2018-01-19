@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="JingXu &lt;https://dataxujing.github.io/&gt;  XinminLi &lt;http://maths.qdu.edu.cn/info/1034/1342.htm&gt;  HuaLiang &lt;http://maths.qdu.edu.cn/info/1101/2002.htm&gt;" />
+
+<meta name="date" content="2018-01-19" />
+
+<title>LN0SCIs</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">LN0SCIs</h1>
+<h4 class="author"><em>JingXu &lt;<a href="https://dataxujing.github.io/" class="uri">https://dataxujing.github.io/</a>&gt;<br> XinminLi &lt;<a href="http://maths.qdu.edu.cn/info/1034/1342.htm" class="uri">http://maths.qdu.edu.cn/info/1034/1342.htm</a>&gt;<br> HuaLiang &lt;<a href="http://maths.qdu.edu.cn/info/1101/2002.htm" class="uri">http://maths.qdu.edu.cn/info/1101/2002.htm</a>&gt;</em></h4>
+<h4 class="date"><em>2018-01-19</em></h4>
+
+
+
+<p><a href="https://github.com/DataXujing/LN0SCIs/"><img src="data:image/png;base64,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" align="right" alt="logo" height="200" width="350" /></a></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This R package based on the paper of Simultaneous Confidence Intervals for Ratios of Means of Log-normal Populations with Zeros by Xu et al. It provides 11 methods for construct simultaneous confidence intervals for ratios of means of LN0. At last, we select 4 excellent methods which based on generalized pivotal quantity with order statistics and two-step MOVER intervals. For the convenience of use, we make a R package called <code>LN0SCIs</code>, and it also has a python version package <code>https://pypi.python.org/pypi/LN0SCIs/0.7.3</code>.</p>
+</div>
+<div id="function" class="section level2">
+<h2>Function</h2>
+<p>We provaide four main functions in our LN0SCIs packages, GPQW,GPQH,FMW and FMWH, if you want to deep understanding these four methods,you can read our paper: Simultaneous Confidence Intervals for Ratios of Means of Log-normal Populations with Zeros. the code we trust in GitHub. If you want to know how to realize them,you can read the source code.</p>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<ul>
+<li>GPQW()</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(LN0SCIs)
+
+<span class="co"># params setting</span>
+p&lt;-<span class="kw">c</span>(<span class="fl">0.1</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>,<span class="fl">0.6</span>)
+n&lt;-<span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">50</span>)
+mu&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">1.3</span>,<span class="dv">2</span>,<span class="dv">0</span>)
+sigma&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)
+C2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))
+
+N&lt;-<span class="dv">1000</span>
+<span class="kw">GPQW</span>(n,p,mu,sigma,N,<span class="dt">C2 =</span> C2) <span class="co">#base function</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">[<span class="dv">1</span>] <span class="st">&quot;====================Method: GPQW====================&quot;</span>
+[<span class="dv">1</span>] <span class="st">&quot;The Simultaneous Confidence Intervals are:          &quot;</span>
+               [LCL,UCL]
+<span class="dv">1</span>   [<span class="op">-</span><span class="fl">1.235113</span>,<span class="fl">2.848869</span>]
+<span class="dv">2</span>   [<span class="op">-</span><span class="fl">0.441577</span>,<span class="fl">7.030192</span>]
+<span class="dv">3</span>   [<span class="op">-</span><span class="fl">3.57776</span>,<span class="op">-</span><span class="fl">2.108937</span>]
+<span class="dv">4</span>    [<span class="op">-</span><span class="fl">1.86122</span>,<span class="fl">6.480295</span>]
+<span class="dv">5</span>  [<span class="op">-</span><span class="fl">5.843864</span>,<span class="op">-</span><span class="fl">1.640372</span>]
+<span class="dv">6</span> [<span class="op">-</span><span class="fl">10.008059</span>,<span class="op">-</span><span class="fl">2.477454</span>]
+[<span class="dv">1</span>] <span class="st">&quot;**********************Time**************************&quot;</span>
+Time difference of <span class="fl">53.041</span> secs</code></pre></div>
+<ul>
+<li>GPQH</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
+p&lt;-<span class="kw">c</span>(<span class="fl">0.1</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>,<span class="fl">0.6</span>)
+n&lt;-<span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">50</span>)
+mu&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">1.3</span>,<span class="dv">2</span>,<span class="dv">0</span>)
+sigma&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)
+C2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))
+
+N&lt;-<span class="dv">1000</span>;
+<span class="kw">GPQH</span>(n,p,mu,sigma,N,<span class="dt">C2 =</span> C2)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">[<span class="dv">1</span>] <span class="st">&quot;====================Method: GPQH====================&quot;</span>
+[<span class="dv">1</span>] <span class="st">&quot;The Simultaneous Confidence Intervals are:          &quot;</span>
+             [LCL,UCL]
+<span class="dv">1</span>  [<span class="op">-</span><span class="fl">0.996117</span>,<span class="fl">1.07758</span>]
+<span class="dv">2</span>  [<span class="op">-</span><span class="fl">0.36159</span>,<span class="fl">2.378184</span>]
+<span class="dv">3</span>  [<span class="op">-</span><span class="fl">2.87464</span>,<span class="fl">1.273622</span>]
+<span class="dv">4</span>  [<span class="op">-</span><span class="fl">0.302924</span>,<span class="fl">2.22018</span>]
+<span class="dv">5</span> [<span class="op">-</span><span class="fl">2.954485</span>,<span class="fl">1.098756</span>]
+<span class="dv">6</span> [<span class="op">-</span><span class="fl">4.086911</span>,<span class="fl">0.345388</span>]
+[<span class="dv">1</span>] <span class="st">&quot;**********************Time**************************&quot;</span>
+Time difference of <span class="fl">16.244</span> secs</code></pre></div>
+<ul>
+<li>FMW</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.1</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>,<span class="fl">0.6</span>)
+n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">50</span>)
+mu &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">1.3</span>,<span class="dv">2</span>,<span class="dv">0</span>)
+sigma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)
+C2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))
+N &lt;-<span class="st"> </span><span class="dv">1000</span>
+
+<span class="kw">FMW</span>(n,p,mu,sigma,N,<span class="dt">C2 =</span> C2)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">[<span class="dv">1</span>] <span class="st">&quot;====================Method: FMW====================&quot;</span>
+[<span class="dv">1</span>] <span class="st">&quot;The Simultaneous Confidence Intervals are:          &quot;</span>
+             [LCL,UCL]
+<span class="dv">1</span> [<span class="op">-</span><span class="fl">1.351672</span>,<span class="fl">0.720717</span>]
+<span class="dv">2</span>  [<span class="op">-</span><span class="fl">1.11909</span>,<span class="fl">2.371603</span>]
+<span class="dv">3</span> [<span class="op">-</span><span class="fl">1.882617</span>,<span class="fl">2.617392</span>]
+<span class="dv">4</span>  [<span class="op">-</span><span class="fl">0.86023</span>,<span class="fl">2.700871</span>]
+<span class="dv">5</span> [<span class="op">-</span><span class="fl">1.618718</span>,<span class="fl">2.936072</span>]
+<span class="dv">6</span> [<span class="op">-</span><span class="fl">2.967078</span>,<span class="fl">2.541986</span>]
+[<span class="dv">1</span>] <span class="st">&quot;**********************Time**************************&quot;</span>
+Time difference of <span class="fl">42.577</span> secs</code></pre></div>
+<ul>
+<li>FMWH</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p&lt;-<span class="kw">c</span>(<span class="fl">0.1</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>,<span class="fl">0.6</span>)
+n&lt;-<span class="kw">c</span>(<span class="dv">30</span>,<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">50</span>)
+mu&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="fl">1.3</span>,<span class="dv">2</span>,<span class="dv">0</span>)
+sigma&lt;-<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>)
+C2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))
+
+N&lt;-<span class="dv">1000</span>;
+<span class="kw">FMWH</span>(n,p,mu,sigma,N,<span class="dt">C2 =</span> C2)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">[<span class="dv">1</span>] <span class="st">&quot;====================Method: FMWH===================&quot;</span>
+[<span class="dv">1</span>] <span class="st">&quot;The Simultaneous Confidence Intervals are:          &quot;</span>
+             [LCL,UCL]
+<span class="dv">1</span> [<span class="op">-</span><span class="fl">1.334835</span>,<span class="fl">1.683172</span>]
+<span class="dv">2</span> [<span class="op">-</span><span class="fl">0.806956</span>,<span class="fl">2.953145</span>]
+<span class="dv">3</span> [<span class="op">-</span><span class="fl">2.683212</span>,<span class="fl">1.739062</span>]
+<span class="dv">4</span> [<span class="op">-</span><span class="fl">1.130242</span>,<span class="fl">2.909716</span>]
+<span class="dv">5</span> [<span class="op">-</span><span class="fl">2.979693</span>,<span class="fl">1.684558</span>]
+<span class="dv">6</span> [<span class="op">-</span><span class="fl">4.145004</span>,<span class="fl">1.117301</span>]
+[<span class="dv">1</span>] <span class="st">&quot;**********************Time**************************&quot;</span>
+Time difference of <span class="fl">11.152</span> secs</code></pre></div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
